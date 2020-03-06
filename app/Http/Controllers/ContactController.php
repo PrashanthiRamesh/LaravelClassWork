@@ -21,7 +21,7 @@ class ContactController extends Controller
         $validator = Validator::make($data, $rules);
 
         if($validator->fails()){
-           return "Failed";
+           return Redirect::to('contact')->withErrors($validator)->withInput();
         }
         return "All good";
     }

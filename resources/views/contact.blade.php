@@ -11,4 +11,5 @@
 <br />
 {{ Form::submit() }}
 {{ Form::close() }}
+{{ HTML::ul($errors->all(), array('class'=>'errors')) }}
 @stop
