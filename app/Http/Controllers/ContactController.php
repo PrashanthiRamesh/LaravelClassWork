@@ -11,11 +11,11 @@ class ContactController extends Controller
         
         $data= array(
             'subject'=> $request->input('subject'),
-            'message'=>$request->input('message')
+            'emailMessage'=>$request->input('message')
         );
         $rules = array(
             'subject' => 'required',
-            'message' => 'required'
+            'emailMessage' => 'required'
             );
             
         $validator = Validator::make($data, $rules);
@@ -23,6 +23,14 @@ class ContactController extends Controller
         if($validator->fails()){
            return Redirect::to('contact')->withErrors($validator)->withInput();
         }
-        return "All good";
+        
+        // testmcit$4
+        \Mail::send('contactEmail', $data, function($message){
+                $message->to('rvprashanthi@gmail.com','Laravel Class')
+                        ->subject('Laravel Contact Us');
+        });
+
+        return "All good!";
+
     }
 }
