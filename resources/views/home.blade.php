@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in! <br>
+                    {{ $course1 }} 
+
+                    {{$course2 }}
                 </div>
             </div>
         </div>
