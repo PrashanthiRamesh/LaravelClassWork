@@ -8,7 +8,7 @@ class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * php artisan migrate
      * @return void
      */
     public function up()

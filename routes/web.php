@@ -26,3 +26,11 @@ Route::get('/contact', function(){
 });
 
 Route::post('/contact', 'ContactController@validateContacts');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
