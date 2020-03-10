@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function(){
-    return view('home');
-});
+
 
 // route to go to about us page - /about
 Route::get('/about', function(){
@@ -29,8 +27,11 @@ Route::post('/contact', 'ContactController@validateContacts');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth']], function () {
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', function(){
+        return view('home');
+    });
+    
+    Route::get('/home', 'HomeController@index')->name('home');
+});
