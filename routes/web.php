@@ -11,24 +11,23 @@
 |
 */
 
-
-
-// route to go to about us page - /about
-Route::get('/about', function(){
-    return view('about');
-});
-
-// route to go to contact us page - /contact
-Route::get('/contact', function(){
-    return view('contact');
-});
-
-Route::post('/contact', 'ContactController@validateContacts');
-
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index')->name('home');
-});
+
+    // route to go to about us page - /about
+    Route::get('/about', function(){
+        return view('about');
+    });
+
+    // route to go to contact us page - /contact
+    Route::get('/contact', function(){
+        return view('contact');
+    });
+
+    Route::post('/contact', 'ContactController@validateContacts');
+
+    });
