@@ -23,11 +23,15 @@ Route::group(['middleware' => ['auth']], function () {
         return view('about');
     });
 
-    // route to go to contact us page - /contact
-    Route::get('/contact', function(){
-        return view('contact');
+    });
+      // Tasks App routes
+    Route::get('/tasks', function(){
+        return "all tasks";
     });
 
-    Route::post('/contact', 'ContactController@validateContacts');
+    Route::post('/task', 'TaskController@create');
 
+    Route::delete('/task/{taskId}', function(){
+        return "delete a task";
     });
+ 

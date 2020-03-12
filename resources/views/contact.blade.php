@@ -3,6 +3,7 @@
 @section('content')
 <h1>Contact Us</h1>
 {{ Form::open(array('url' => 'contact')) }}
+{{ csrf_field() }}
 {{ Form::label('Subject') }}
 {{ Form::text('subject','Enter your subject') }}
 <br />
