@@ -5,17 +5,17 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class TaskController extends Controller
+class ContactController extends Controller
 {
-    function create(Request $request){
+    function validateContacts(Request $request){
         
         $data= array(
-            'name'=> $request->input('name'),
-           
+            'subject'=> $request->input('subject'),
+            'emailMessage'=>$request->input('message')
         );
         $rules = array(
-            'name' => 'required',
-       
+            'subject' => 'required',
+            'emailMessage' => 'required'
             );
             
         $validator = Validator::make($data, $rules);
@@ -25,8 +25,12 @@ class TaskController extends Controller
         }
         
         // testmcit$4
-        $flag= Task::create();
-        return "creation success";
+        \Mail::send('contactEmail', $data, function($message){
+                $message->to('rvprashanthi@gmail.com','Laravel Class')
+                        ->subject('Laravel Contact Us');
+        });
+
+        return "All good!";
 
     }
 }

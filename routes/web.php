@@ -31,7 +31,5 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/task', 'TaskController@create');
 
-    Route::delete('/task/{taskId}', function(){
-        return "delete a task";
-    });
+    Route::delete('/task/{taskId}', 'TaskController@delete');
  

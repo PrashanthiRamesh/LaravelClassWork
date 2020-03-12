@@ -20,6 +20,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'http://localhost:8000/task'
+        'http://localhost:8000/*'
+
     ];
 }

@@ -16,7 +16,9 @@ class TaskController extends Controller
         return $task;
     }
 
-    public function viewAll(){
-
+    public function delete(int $taskId){
+        $task = Task::find($taskId);    
+        $task->delete();
+        return "delete success";
     }
 }
